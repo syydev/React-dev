@@ -1,15 +1,16 @@
 import React, { useReducer } from 'react';
 import counterReducer from '../reducers/counter'
 
-type Props = {}
-
-const Counter: React.FC<Props> = props => {
+const Counter: React.FC = () => {
   const [state, dispatch] = useReducer(counterReducer, { count: 0 });
-  return <>
-    <p>{state.count}</p>
-    <button onClick={() => dispatch({ type: 'increment' })}>+</button>
-    <button onClick={() => dispatch({ type: 'decrement' })}>-</button>
-  </>
+  return (
+    <React.Fragment>
+      <p>{state.count}</p>
+      <button onClick={() => dispatch({ type: 'increment' })}>+</button>
+      <button onClick={() => dispatch({ type: 'decrement' })}>-</button>
+      <button onClick={() => dispatch({ type: 'reset' })}>reset</button>
+    </React.Fragment>
+  );
 }
 
 export default Counter;

@@ -1,7 +1,7 @@
 import React from 'react';
 import CounterContainer from './containers/CounterContainer';
 
-const App = () => {
+const App: React.FC = () => {
   return <CounterContainer />;
 };
 
