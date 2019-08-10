@@ -1,12 +1,12 @@
 import React from 'react';
-import LoginComponent from './Login'
+import Login from './Login'
 
-const HeaderComponent: React.FC = () => {
+const Header: React.FC = () => {
   return (
     <React.Fragment>
-      <LoginComponent/>
+      <Login/>
     </React.Fragment>
   );
 }
 
-export default HeaderComponent;
+export default Header;

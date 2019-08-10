@@ -1,7 +1,7 @@
 import React, { useState, useReducer } from 'react';
 import loginReducer, { initialState } from '../../reducers/login'
 
-const LoginComponent: React.FC = () => {
+const Login: React.FC = () => {
   const [inputID, setInputID] = useState('');
   const [inputPW, setInputPW] = useState('');
   const [state, dispatch] = useReducer(loginReducer, initialState);
@@ -16,11 +16,13 @@ const LoginComponent: React.FC = () => {
   else
     return (
       <React.Fragment>
-        <input type='text' onChange={event => setInputID(event.target.value)} />
-        <input type='password' onChange={event => setInputPW(event.target.value)} />
-        <button onClick={() => dispatch({ type: 'LOGIN_REQUEST', id: inputID, pw: inputPW })}>Login</button>
+        <form>
+          <input type='text' onChange={event => setInputID(event.target.value)} />
+          <input type='password' onChange={event => setInputPW(event.target.value)} />
+          <button type='submit' onClick={() => dispatch({ type: 'LOGIN_REQUEST', id: inputID, pw: inputPW })}>Login</button>
+        </form>
       </React.Fragment>
     );
 }
 
-export default LoginComponent;
+export default Login;
