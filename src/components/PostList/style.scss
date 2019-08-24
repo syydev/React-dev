@@ -1,7 +1,8 @@
+/* Post List */
 table {
   background: white;
   border-collapse: collapse;
-  margin: 30px 10% 0 10%;
+  margin: 30px auto;
   width: 80%;
   font-size: 18px;
 }
@@ -26,4 +27,24 @@ tr:nth-child(even) {
 }
 .table-content:hover {
   background-color: gray;
+}
+
+
+/* Pagination */
+li {
+  display: inline-block;
+  font-weight: bold;
+  margin: 0 3px 0 3px;
+}
+.button {
+  color: gray;
+}
+.button:hover {
+  background-color: black;
+}
+.button-active {
+  color: black;
+}
+.button-disabled {
+  visibility: hidden;
 }

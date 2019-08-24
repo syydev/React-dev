@@ -15,23 +15,23 @@ const Pagination: React.FC<Props> = props => {
   }
 
   return (
-    <ul className="pagination">
-      <li className={pager.currentPage === 1 ? 'disabled' : ''}>
-        <button onClick={() => setPager(1)}>First</button>
+    <ul>
+      <li className={pager.currentPage === 1 ? 'button-disabled' : 'button'}>
+        <a onClick={() => setPager(1)}>First</a>
       </li>
-      <li className={pager.currentPage === 1 ? 'disabled' : ''}>
-        <button onClick={() => setPager(pager.currentPage - 1)}>Previous</button>
+      <li className={pager.currentPage === 1 ? 'button-disabled' : 'button'}>
+        <a onClick={() => setPager(pager.currentPage - 1)}>Previous</a>
       </li>
       {pager.pages.map((page: number, index: number) =>
-        <li key={index} className={pager.currentPage === page ? 'active' : ''}>
-          <button onClick={() => setPager(page)}>{page}</button>
+        <li key={index} className={pager.currentPage === page ? 'active' : 'button'}>
+          <a onClick={() => setPager(page)}>{page}</a>
         </li>
       )}
-      <li className={pager.currentPage === pager.totalPages ? 'disabled' : ''}>
-        <button onClick={() => setPager(pager.currentPage + 1)}>Next</button>
+      <li className={pager.currentPage === pager.totalPages ? 'button-disabled' : 'button'}>
+        <a onClick={() => setPager(pager.currentPage + 1)}>Next</a>
       </li>
-      <li className={pager.currentPage === pager.totalPages ? 'disabled' : ''}>
-        <button onClick={() => setPager(pager.totalPages)}>Last</button>
+      <li className={pager.currentPage === pager.totalPages ? 'button-disabled' : 'button'}>
+        <a onClick={() => setPager(pager.totalPages)}>Last</a>
       </li>
     </ul>
   );
