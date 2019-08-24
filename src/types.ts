@@ -7,3 +7,7 @@ export type LoginAction =
   | { type: 'LOGIN_SUCCESS' }
   | { type: 'LOGIN_FAIL' }
   | { type: 'LOGOUT' }
+
+export type PaginationAction = {
+  type: 'CHANGE_PAGE', items: []
+}

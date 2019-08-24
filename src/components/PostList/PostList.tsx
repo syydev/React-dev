@@ -1,8 +1,13 @@
 import React from 'react';
-import postList from './SampleData'
+import sampleData from './SampleData';
+import Pagination from './Pagination';
 import './style.scss';
+import { useSelector } from 'react-redux';
 
 const PostList: React.FC = () => {
+  const items: any[] = useSelector((state: any) => state.paginationReducer.items);
+  const pageSize = 10;
+
   return (
     <div>
       <table>
@@ -16,7 +21,7 @@ const PostList: React.FC = () => {
           </tr>
         </thead>
         <tbody>
-          {postList.map(post =>
+          {items.map(post =>
             <tr className='table-content'>
               <td>{post.id}</td>
               <td>{post.date}</td>
@@ -27,6 +32,7 @@ const PostList: React.FC = () => {
           )}
         </tbody>
       </table>
+      <Pagination items={sampleData} pageSize={pageSize} />
     </div>
   );
 }
