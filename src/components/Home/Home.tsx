@@ -1,6 +1,5 @@
-import React, { useState, useReducer } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom'
-import loginReducer, { initialState } from '../../reducers/login'
 
 const Home: React.FC = () => {
   return (
