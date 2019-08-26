@@ -9,15 +9,15 @@ const Header: React.FC = () => {
 
   return (
     <div className='app-header'>
-      <Link className='app-title' to='./'>React-dev</Link>
+      <Link className='app-title' to='/'>React-dev</Link>
       {!AuthCheck() ? (
         <nav className="header-nav">
-          <Link className="header-nav-item" to='./login'>Login</Link>
+          <Link className="header-nav-item" to='/login'>Login</Link>
         </nav>
       ) : (
           <nav className="header-nav">
-            <Link className='header-nav-item' to='./post'>Post List</Link>
-            <Link className='header-nav-item' to='./'>{localStorage.getItem('id')}</Link>
+            <Link className='header-nav-item' to='/post'>Post List</Link>
+            <Link className='header-nav-item' to='/'>{localStorage.getItem('id')}</Link>
             <a className='header-nav-item' onClick={() => dispatch({ type: 'LOGOUT' })}>Logout</a>
           </nav>
         )}
