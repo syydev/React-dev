@@ -15,7 +15,7 @@ const Pagination: React.FC<Props> = props => {
   }
 
   return (
-    <ul>
+    <ul className='pagination'>
       <li className={pager.currentPage === 1 ? 'button-disabled' : 'button'}>
         <a onClick={() => setPager(1)}>First</a>
       </li>

@@ -5,6 +5,7 @@ import HeaderContainer from './containers/HeaderContainer';
 import HomeContainer from './containers/HomeContainer'
 import { Login } from './components/Auth';
 import { PostList } from './components/PostList'
+import Registration from './components/Registration'
 import './style.scss'
 
 const App: React.FC = () => {
@@ -17,6 +18,7 @@ const App: React.FC = () => {
           <Route exact path="/counter" component={CounterContainer} />
           <Route exact path="/login" component={Login} />
           <Route exact path="/post" component={PostList} />
+          <Route exact path="/post/registration" component={Registration} />
         </div>
       </Switch>
     </React.Fragment>

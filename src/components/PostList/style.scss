@@ -1,50 +1,65 @@
 /* Post List */
-table {
-  background: white;
-  border-collapse: collapse;
-  margin: 30px auto;
-  width: 80%;
-  font-size: 18px;
-}
-table, tr, td {
-  border-top: 1px solid #ddd;
-  border-bottom: 1px solid #ddd;
-  padding: 8px 10px 8px 10px;
-  text-align: center;
-}
-tr:nth-child(even) {
-  background-color: #f2f2f2;
-}
+.post-list {
+  table {
+    background: white;
+    border-collapse: collapse;
+    margin: 30px auto;
+    width: 80%;
+    font-size: 18px;
+  }
+  table, tr, td {
+    border-top: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+    padding: 8px 10px 8px 10px;
+    text-align: center;
+  }
+  tr:nth-child(even) {
+    background: #f2f2f2;
+  }
 
-.table-title {
-  padding-bottom: 10px;
-  margin: 0 0 10px;
-}
-.table-header {
-  border-top: 2px solid #ccc;
-  border-bottom: 2px solid #ccc;
-  font-weight: bold;
-}
-.table-content:hover {
-  background-color: gray;
+  .table-title {
+    padding-bottom: 10px;
+    margin: 0 0 10px;
+  }
+  .table-header {
+    border-top: 2px solid #ccc;
+    border-bottom: 2px solid #ccc;
+    font-weight: bold;
+  }
+  .table-content:hover {
+    background: gray;
+  }
+  .button {
+    background: rgb(240, 0, 0);
+    color: white;
+    font-weight: bold;
+    margin-left: 70%;
+    padding: 10px 17px;
+    border-radius: 4px;
+  }
+  .button:hover {
+    background: rgb(200, 0, 0);
+  }
 }
 
 
 /* Pagination */
-li {
-  display: inline-block;
-  font-weight: bold;
-  margin: 0 3px 0 3px;
-}
-.button {
-  color: gray;
-}
-.button:hover {
-  background-color: black;
-}
-.button-active {
-  color: black;
-}
-.button-disabled {
-  visibility: hidden;
+.pagination {
+  li {
+    display: inline-block;
+    font-weight: bold;
+    margin: 0 3px 0 3px;
+  }
+  .button {
+    color: gray;
+  }
+  .button:hover {
+    background: black;
+  }
+  .button-active {
+    color: black;
+  }
+  .button-disabled {
+    visibility: hidden;
+  }
 }
