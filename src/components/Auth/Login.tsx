@@ -13,10 +13,12 @@ const Login: React.FC = () => {
       <table>
         <tbody>
           <tr>
-            <td><input type="text" placeholder="ID" onChange={event => setId(event.target.value)} required /></td>
+            <td><input type="text" placeholder="ID" onChange={event => setId(event.target.value)} required
+              onKeyDown={event => { if (event.key === 'Enter') dispatch({ type: 'LOGIN_REQUEST', id: id, pw: pw }) }} /></td>
           </tr>
           <tr>
-            <td><input type="password" placeholder="Password" onChange={event => setPw(event.target.value)} required></input></td>
+            <td><input type="password" placeholder="Password" onChange={event => setPw(event.target.value)} required
+              onKeyDown={event => { if (event.key === 'Enter') dispatch({ type: 'LOGIN_REQUEST', id: id, pw: pw }) }}></input></td>
           </tr>
         </tbody>
       </table>
