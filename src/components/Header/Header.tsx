@@ -1,6 +1,6 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import { AuthCheck } from '../../utils/Auth';
+import { Link, NavLink } from 'react-router-dom';
+import { AuthCheck } from '../../utils';
 import { useDispatch } from 'react-redux';
 import './style.scss';
 
@@ -9,15 +9,16 @@ const Header: React.FC = () => {
 
   return (
     <div className='app-header'>
-      <Link className='app-title' to='/'>React-dev</Link>
+      <Link className='app-title' style={{ textDecoration: 'none' }} to='/'>React-dev</Link>
       {!AuthCheck() ? (
         <nav className="header-nav">
-          <Link className="header-nav-item" to='/login'>Login</Link>
+          <NavLink className="header-nav-item" activeClassName="active" style={{ textDecoration: 'none' }} to='/login'>Login</NavLink>
+          <NavLink className="header-nav-item" activeClassName="active" style={{ textDecoration: 'none' }} to='/signup'>SignUp</NavLink>
         </nav>
       ) : (
           <nav className="header-nav">
-            <Link className='header-nav-item' to='/post'>Post List</Link>
-            <Link className='header-nav-item' to='/'>{localStorage.getItem('id')}</Link>
+            <NavLink className='header-nav-item' activeClassName="active" style={{ textDecoration: 'none' }} to='/post'>Post List</NavLink>
+            <NavLink className='header-nav-item' activeClassName="active" style={{ textDecoration: 'none' }} to='/user'>{localStorage.getItem('id')}</NavLink>
             <a className='header-nav-item' onClick={() => dispatch({ type: 'LOGOUT' })}>Logout</a>
           </nav>
         )}
