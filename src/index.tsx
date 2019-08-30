@@ -1,20 +1,23 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import createHistory from 'history/createBrowserHistory';
+import { PersistGate } from 'redux-persist/integration/react';
 import { Route, Router } from 'react-router-dom';
-import { createStore } from 'redux';
 import { Provider } from 'react-redux';
 import App from './App';
-import rootReducer from './reducers';
+import configureStore from './store/configureStore';
 
+const initialState = {};
+const { store, persistor } = configureStore(initialState);
 const history = createHistory();
-const store = createStore(rootReducer);
 
 ReactDOM.render(
   <Provider store={store}>
-    <Router history={history}>
-      <Route component={App} />
-    </Router>
+    <PersistGate loading={null} persistor={persistor}>
+      <Router history={history}>
+        <Route component={App} />
+      </Router>
+    </PersistGate>
   </Provider>,
   document.getElementById('root')
 );

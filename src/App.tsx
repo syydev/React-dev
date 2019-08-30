@@ -3,7 +3,7 @@ import { Route, Switch } from 'react-router-dom';
 import CounterContainer from './containers/CounterContainer';
 import HeaderContainer from './containers/HeaderContainer';
 import HomeContainer from './containers/HomeContainer'
-import { Login } from './components/Auth';
+import { Login } from './components/Login';
 import SignUp from './components/SignUp';
 import { PostList } from './components/PostList';
 import Registration from './components/Registration';

@@ -1,54 +1,21 @@
 import axios from 'axios';
 
-const GET = (uri: string, param: string, data: any) => {
-  axios.get('http://localhost:8080/' + uri, {
-    params: param,
-    headers: {
-      'Accept': 'application/json',
-      'Content-Type': 'application/json'
-    },
-    data
-  })
-    .then(response => console.log(response))
-    .catch(error => console.log(error));
+const GET: any = (uri: string, param?: any) => {
+  return axios.get('http://localhost:8080' + uri, {
+    params: param
+  });
 };
 
-const POST = (uri: string, data: any) => {
-  axios.post('http://localhost:8080/' + uri, {
-    headers: {
-      'Accept': 'application/json',
-      'Content-Type': 'application/json'
-    },
-    data
-  })
-    .then(response => console.log(response))
-    .catch(error => console.log(error));
+const POST: any = (uri: string, data: any) => {
+  return axios.post('http://localhost:8080' + uri, { data });
 };
 
-const PUT = (uri: string, param: string, data: any) => {
-  axios.put('http://localhost:8080/' + uri, {
-    params: param,
-    headers: {
-      'Accept': 'application/json',
-      'Content-Type': 'application/json'
-    },
-    data
-  })
-    .then(response => console.log(response))
-    .catch(error => console.log(error));
+const PUT: any = (uri: string, data?: any) => {
+  return axios.put('http://localhost:8080' + uri, { data });
 };
 
-const DELETE = (uri: string, param: string, data: any) => {
-  axios.delete('http://localhost:8080/' + uri, {
-    params: param,
-    headers: {
-      'Accept': 'application/json',
-      'Content-Type': 'application/json'
-    },
-    data
-  })
-    .then(response => console.log(response))
-    .catch(error => console.log(error));
+const DELETE: any = (uri: string) => {
+  return axios.delete('http://localhost:8080' + uri);
 };
 
 export {
