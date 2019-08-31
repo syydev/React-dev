@@ -4,7 +4,7 @@ export const initialState = {
   isLoggedIn: false,
   isCheckDuplicate: false,
   id: '',
-  name: '',
+  name: ''
 };
 
 const userReducer = (state = initialState, action: any) => {
@@ -13,31 +13,28 @@ const userReducer = (state = initialState, action: any) => {
       window.localStorage.setItem('isLoggedIn', 'ok');
       window.localStorage.setItem('id', action.payload.id);
       window.localStorage.setItem('name', action.payload.name);
-      window.location.href = '/';
+      action.payload.push('/');
       return {
         ...state,
         isLoggedIn: true,
-        id: action.payload.id,
+        id: action.payload.id
       };
     case UserActionTypes.LOGOUT.SUCCESS:
-        window.localStorage.clear();
-        window.location.href = '/';
-      return {
-        ...initialState,
-        isLoggedIn: false,
-      };
+      window.localStorage.clear();
+      window.location.href = '/';
+      return initialState;
     case UserActionTypes.SIGN_UP.SUCCESS:
-        window.location.href = '/';
-        alert('회원가입이 완료되었습니다.');
+      action.payload.push('/');
+      alert('회원가입이 완료되었습니다.');
       return {
         ...state,
         isLoggedIn: true,
-        id: action.payload.id,
+        id: action.payload.id
       };
     case UserActionTypes.CHECK_DUPLICATE_ID.SUCCESS:
       return {
         ...state,
-        isCheckDuplicate: true,
+        isCheckDuplicate: true
       };
     default:
       return state;

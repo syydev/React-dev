@@ -1,13 +1,13 @@
 import { call, put, takeLatest } from 'redux-saga/effects';
 import { SHA256 } from 'crypto-js';
-import { UserActionTypes, UserAction } from './user.action';
+import { UserAction, UserActionTypes } from './user.action';
 import { GET, POST } from '../../utils/Api';
 
 export function* login(action: any) {
   try {
     yield put(UserAction.login.request());
     const response = yield call(POST, '/login', { ...action.payload, pw: SHA256(action.payload).toString() });
-    if (response.data.isLoggedIn == 'ok') yield put(UserAction.login.success({ id: action.payload.id, name: response.data.name }));
+    if (response.data.isLoggedIn == 'ok') yield put(UserAction.login.success({ ...action.payload, name: response.data.name }));
     else alert('아이디 또는 비밀번호를 확인해주세요.');
   } catch (error) {
     yield put(UserAction.login.failure(error));
