@@ -24,7 +24,7 @@ const Registration: React.FC = () => {
             </tr>
           </tbody>
         </table>
-        <a className='button' onClick={() => alert(title)}>등록</a>
+        <a className='submit-button' onClick={() => alert(title)}>등록</a>
       </form>
     </div>
   );

@@ -1,3 +1,14 @@
 .content {
   text-align: center;
 }
+.submit-button {
+  background: rgb(240, 0, 0);
+  color: white;
+  font-weight: bold;
+  padding: 10px 17px;
+  border: none;
+  border-radius: 4px;
+}
+.submit-button:hover {
+  background: rgb(200, 0, 0);
+}
