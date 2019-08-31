@@ -1,6 +1,5 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
-import CounterContainer from './containers/CounterContainer';
 import HeaderContainer from './containers/HeaderContainer';
 import HomeContainer from './containers/HomeContainer'
 import { Login } from './components/Login';
@@ -16,7 +15,6 @@ const App: React.FC = () => {
       <Switch>
         <div className='content'>
           <Route exact path="/" component={HomeContainer} />
-          <Route exact path="/counter" component={CounterContainer} />
           <Route exact path="/login" component={Login} />
           <Route exact path="/signup" component={SignUp} />
           <Route exact path="/post" component={PostList} />
