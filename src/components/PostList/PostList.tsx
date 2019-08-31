@@ -1,12 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { useSelector } from 'react-redux';
-import sampleData from './SampleData';
+import { connect } from 'react-redux';
 import Pagination from './Pagination';
+import { TableAction } from '../../store/table/table.action';
 import './style.scss';
 
-const PostList: React.FC = () => {
-  const items: any[] = useSelector((state: any) => state.paginationReducer.items);
+const PostList: React.FC = (props: any) => {
+  const { getData, totalItems, items } = props;
   const pageSize = 10;
 
   return (
@@ -18,18 +18,18 @@ const PostList: React.FC = () => {
               <td>번호</td>
               <td>날짜</td>
               <td>제목</td>
+              <td>내용</td>
               <td>작성자</td>
-              <td>조회수</td>
             </tr>
           </thead>
           <tbody>
-            {items.map(post =>
+            {items.map((item: any, index: number) =>
               <tr className='table-content'>
-                <td>{post.id}</td>
-                <td>{post.date}</td>
-                <td>{post.title}</td>
-                <td>{post.userID}</td>
-                <td>{post.viewNum}</td>
+                <td>{index + 1}</td>
+                <td>{item.creationDate}</td>
+                <td>{item.title}</td>
+                <td>{item.content}</td>
+                <td>{item.userId}</td>
               </tr>
             )}
           </tbody>
@@ -37,10 +37,19 @@ const PostList: React.FC = () => {
         <Link className='button' to='/post/registration'>글쓰기</Link>
       </div>
       <div>
-        <Pagination items={sampleData} pageSize={pageSize} />
+        <Pagination totalItems={totalItems} pageSize={pageSize} />
       </div>
     </div>
   );
-}
+};
 
-export default PostList;
+const mapStateToProps = (state: any) => ({
+  items: state.table.items,
+  totalItems: state.table.totalItems
+});
+
+const mapDispatchToProps = (dispatch: any) => ({
+  getData: (_id: string) => dispatch(TableAction.getData.index(_id))
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(PostList);

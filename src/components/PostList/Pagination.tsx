@@ -2,13 +2,13 @@ import React from 'react';
 import { usePager } from '../../hooks'
 
 type Props = {
-  items: {}[],
+  totalItems: [],
   pageSize: number
 };
 
 const Pagination: React.FC<Props> = props => {
-  const { items, pageSize } = props;
-  const [pager, setPager] = usePager(items, pageSize);
+  const { totalItems, pageSize } = props;
+  const [pager, setPager] = usePager(totalItems, pageSize);
 
   if (!pager.pages || pager.pages.length <= 1) {
     return null;

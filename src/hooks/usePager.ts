@@ -1,10 +1,11 @@
 import { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
+import { TableAction } from '../store/table/table.action';
 
-function getPager(totalItems: number, currentPage: number, pageSize: number) {
-  const totalPages = Math.ceil(totalItems / pageSize);
+function getPager(totalItemsNum: number, currentPage: number, pageSize: number) {
+  const totalPages = Math.ceil(totalItemsNum / pageSize);
   const startIndex = (currentPage - 1) * pageSize;
-  const endIndex = Math.min(startIndex + pageSize - 1, totalItems - 1);
+  const endIndex = Math.min(startIndex + pageSize, totalItemsNum);
 
   let startPage: number, endPage: number;
   if (totalPages <= 10) {
@@ -21,7 +22,7 @@ function getPager(totalItems: number, currentPage: number, pageSize: number) {
   }
 
   return {
-    totalItems: totalItems,
+    totalItemsNum: totalItemsNum,
     currentPage: currentPage,
     pageSize: pageSize,
     totalPages: totalPages,
@@ -33,19 +34,27 @@ function getPager(totalItems: number, currentPage: number, pageSize: number) {
   };
 };
 
-export const usePager = (items: {}[], pageSize: number): [any, (page: number) => void] => {
-  const [pager, setPager] = useState(getPager(items.length, 1, pageSize));
+export const usePager = (totalItems: [], pageSize: number): [any, (page: number) => void] => {
+  const [pager, setPager] = useState(getPager(totalItems.length, 1, pageSize));
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch({ type: 'CHANGE_PAGE', items: items.slice(pager.startIndex, pager.endIndex + 1) });
+    dispatch(TableAction.getTable.index());
+  }, []);
+
+  useEffect(() => {
+    setPager(getPager(totalItems.length, pager.currentPage, pageSize))
+  }, [totalItems]);
+
+  useEffect(() => {
+    dispatch(TableAction.pagination({ items: totalItems.slice(pager.startIndex, pager.endIndex) }));
   }, [pager]);
 
   const updatePager = (page: number) => {
     if (page < 1 || page > pager.totalPages) {
       return;
     }
-    setPager(getPager(items.length, page, pageSize));
+    setPager(getPager(totalItems.length, page, pageSize));
   };
 
   return [pager, updatePager];
