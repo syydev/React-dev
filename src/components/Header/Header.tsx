@@ -28,7 +28,8 @@ const Header: React.FC = (props: any) => {
 };
 
 const mapStateToProps = (state: any) => ({
-  isLoggedIn: state.user.isLoggedIn
+  isLoggedIn: state.user.isLoggedIn,
+  name: state.user.name
 });
 
 const mapDispatchToProps = (dispatch: any) => ({

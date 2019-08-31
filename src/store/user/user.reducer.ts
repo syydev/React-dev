@@ -17,7 +17,8 @@ const userReducer = (state = initialState, action: any) => {
       return {
         ...state,
         isLoggedIn: true,
-        id: action.payload.id
+        id: action.payload.id,
+        name: action.payload.name
       };
     case UserActionTypes.LOGOUT.SUCCESS:
       window.localStorage.clear();
@@ -29,7 +30,8 @@ const userReducer = (state = initialState, action: any) => {
       return {
         ...state,
         isLoggedIn: true,
-        id: action.payload.id
+        id: action.payload.id,
+        name: action.payload.name
       };
     case UserActionTypes.CHECK_DUPLICATE_ID.SUCCESS:
       return {
