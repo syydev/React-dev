@@ -2,11 +2,10 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import Pagination from './Pagination';
-import { TableAction } from '../../store/table/table.action';
 import './style.scss';
 
 const PostList: React.FC = (props: any) => {
-  const { getData, totalItems, items } = props;
+  const { totalItems, items } = props;
   const pageSize = 10;
 
   return (
@@ -27,7 +26,7 @@ const PostList: React.FC = (props: any) => {
               <tr className='table-content'>
                 <td>{index + 1}</td>
                 <td>{item.creationDate}</td>
-                <td>{item.title}</td>
+                <td><Link to={{ pathname: `/post/${index + 1}/${item.title}`, state: item }}>{item.title}</Link></td>
                 <td>{item.content}</td>
                 <td>{item.userId}</td>
               </tr>
@@ -48,8 +47,4 @@ const mapStateToProps = (state: any) => ({
   totalItems: state.table.totalItems
 });
 
-const mapDispatchToProps = (dispatch: any) => ({
-  getData: (_id: string) => dispatch(TableAction.getData.index(_id))
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(PostList);
+export default connect(mapStateToProps)(PostList);

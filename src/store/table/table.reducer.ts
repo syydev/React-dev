@@ -19,7 +19,6 @@ const tableReducer = (state = initialState, action: any) => {
         itemInfo: action.payload.itemInfo
       };
     case TableActionTypes.ADD_DATA.SUCCESS:
-      console.log(action.payload);
       window.location.href = '/post';
       return {
         ...state,
@@ -31,6 +30,7 @@ const tableReducer = (state = initialState, action: any) => {
         itemInfo: action.payload.itemInfo
       };
     case TableActionTypes.REMOVE_DATA.SUCCESS:
+      window.location.href = '/post';
       return state;
     case TableActionTypes.PAGINATION:
       return {

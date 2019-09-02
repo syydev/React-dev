@@ -1,0 +1,29 @@
+.post-info{
+  table {
+    background: white;
+    border-collapse: collapse;
+    margin: 30px auto;
+    width: 60%;
+    font-size: 18px;
+  }
+  table, tr, td {
+    border-top: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+    padding: 8px 10px 8px 10px;
+    text-align: center;
+  }
+  
+  .writer-area {
+    display: inline-block;
+  }
+  .button {
+    background: rgb(240, 0, 0);
+    color: white;
+    font-weight: bold;
+    padding: 10px 17px;
+    border-radius: 4px;
+  }
+  .button:hover {
+    background: rgb(200, 0, 0);
+  }
+}
