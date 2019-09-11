@@ -35,7 +35,7 @@ export function* addData(action: any) {
 export function* modifyData(action: any) {
   try {
     yield put(TableAction.addData.request());
-    const response = yield call(PUT, '/items', action.payload);
+    const response = yield call(PUT, `/items/${action.payload._id}`, action.payload);
     yield put(TableAction.addData.success({ itemInfo: response.data }));
   } catch (error) {
     yield put(TableAction.addData.failure(error));

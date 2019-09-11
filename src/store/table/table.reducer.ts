@@ -25,6 +25,7 @@ const tableReducer = (state = initialState, action: any) => {
         itemInfo: action.payload.data
       };
     case TableActionTypes.MODIFY_DATA.SUCCESS:
+      window.location.href = '/post';
       return {
         ...state,
         itemInfo: action.payload.itemInfo

@@ -7,6 +7,7 @@ import SignUp from './components/SignUp';
 import PostList from './components/PostList';
 import Registration from './components/Registration';
 import PostInfo from './components/PostInfo';
+import Modification from './components/Modification';
 import './style.scss';
 
 const App: React.FC = () => {
@@ -21,7 +22,7 @@ const App: React.FC = () => {
           <Route exact path="/post" component={PostList} />
           <Route exact path="/post/registration" component={Registration} />
           <Route exact path="/post/:id/:title" component={PostInfo} />
-          <Route exact path="/post/:id/:title/modification" component={Registration} />
+          <Route exact path="/post/:id/:title/modification" component={Modification} />
         </div>
       </Switch>
     </React.Fragment>
