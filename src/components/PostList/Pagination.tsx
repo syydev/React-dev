@@ -1,12 +1,13 @@
 import React from 'react';
 import { usePager } from '../../hooks'
+import { IItem } from '../../type';
 
-type Props = {
-  totalItems: [],
-  pageSize: number
+interface IProps {
+  totalItems: Array<IItem>,
+  pageSize: number,
 };
 
-const Pagination: React.FC<Props> = props => {
+const Pagination: React.FC<IProps> = props => {
   const { totalItems, pageSize } = props;
   const [pager, setPager] = usePager(totalItems, pageSize);
 

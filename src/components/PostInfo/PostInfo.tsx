@@ -1,12 +1,18 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { connect } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { TableAction } from '../../store/table/table.action';
+import { IState } from '../../type';
 import './style.scss';
 
 const PostInfo: React.FC = (props: any) => {
-  const { id, removeData } = props;
-  const itemInfo = props.location.state;
+  const id = useSelector((state: IState) => state.user.id);
+  const item = useSelector((state: IState) => state.table.itemInfo);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(TableAction.getData.index({ _id: props.match.params.id }));
+  }, []);
 
   return (
     <div className='post-info'>
@@ -14,26 +20,26 @@ const PostInfo: React.FC = (props: any) => {
         <tbody>
           <tr>
             <td>제목</td>
-            <td>{itemInfo.title}</td>
+            <td>{item.title}</td>
           </tr>
           <tr>
             <td>날짜</td>
-            <td>{itemInfo.creationDate}</td>
+            <td>{item.creationDate}</td>
           </tr>
           <tr>
             <td>작성자</td>
-            <td>{itemInfo.userId}</td>
+            <td>{item.userId}</td>
           </tr>
           <tr>
             <td>내용</td>
-            <td>{itemInfo.content}</td>
+            <td>{item.content}</td>
           </tr>
         </tbody>
       </table>
-      {(itemInfo.userId == id) ? (
+      {(item.userId == id) ? (
         <div className='writer-area'>
-          <Link className='button' to='/post/modification'>수정</Link>
-          <a className='button' onClick={() => removeData({ _id: itemInfo._id })}>삭제</a>
+          <Link className='button' to={{ pathname: `/post/${item._id}/${item.title}/modification`, state: item }}>수정</Link>
+          <a className='button' onClick={() => dispatch(TableAction.removeData.index({ _id: item._id }))}>삭제</a>
         </div>
       ) : null
       }
@@ -41,12 +47,4 @@ const PostInfo: React.FC = (props: any) => {
   );
 };
 
-const mapStateToProps = (state: any) => ({
-  id: state.user.id
-});
-
-const mapDispatchToProps = (dispatch: any) => ({
-  removeData: (_id: string) => dispatch(TableAction.removeData.index(_id))
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(PostInfo);
+export default PostInfo;

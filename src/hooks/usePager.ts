@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { TableAction } from '../store/table/table.action';
+import { IItem, IPager } from '../type';
 
 function getPager(totalItemsNum: number, currentPage: number, pageSize: number) {
   const totalPages = Math.ceil(totalItemsNum / pageSize);
@@ -34,7 +35,7 @@ function getPager(totalItemsNum: number, currentPage: number, pageSize: number) 
   };
 };
 
-export const usePager = (totalItems: [], pageSize: number): [any, (page: number) => void] => {
+export const usePager = (totalItems: Array<IItem>, pageSize: number): [IPager, (page: number) => void] => {
   const [pager, setPager] = useState(getPager(totalItems.length, 1, pageSize));
   const dispatch = useDispatch();
 

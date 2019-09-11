@@ -1,17 +1,19 @@
 import React, { useState } from 'react';
-import { connect } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { TableAction } from '../../store/table/table.action';
+import { IState } from '../../type';
 import './style.scss';
 
-const Registration: React.FC = (props: any) => {
-  const { addData, id } = props;
+const Registration: React.FC = () => {
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
+  const dispatch = useDispatch();
+  const id = useSelector((state: IState) => state.user.id);
 
   return (
     <div className='registration'>
       <h2 className='table-title'>등록하기</h2>
-      <form onSubmit={(event) => { event.preventDefault(); addData({ title: title, content: content, userId: id }) }}>
+      <form onSubmit={(event) => { event.preventDefault(); dispatch(TableAction.addData.index({ title: title, content: content, userId: id })) }}>
         <table>
           <tbody>
             <tr>
@@ -28,12 +30,4 @@ const Registration: React.FC = (props: any) => {
   );
 }
 
-const mapStateToProps = (state: any) => ({
-  id: state.user.id
-});
-
-const mapDispatchToProps = (dispatch: any) => ({
-  addData: (inputData: any) => dispatch(TableAction.addData.index(inputData))
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(Registration);
+export default Registration;

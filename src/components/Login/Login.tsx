@@ -1,17 +1,17 @@
 import React, { useState } from 'react';
-import { connect } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { UserAction } from '../../store/user/user.action'
 import './style.scss';
 
-const Login: React.FC = (props: any) => {
+const Login: React.FC = () => {
   const [id, setId] = useState('');
   const [pw, setPw] = useState('');
-  const push = (url: string) => props.history.push(url);
+  const dispatch = useDispatch();
 
   return (
     <div className='login'>
       <h2 className='table-title'>로그인</h2>
-      <form onSubmit={(event) => { event.preventDefault(); props.login({ id: id, pw: pw, push: push }) }}>
+      <form onSubmit={(event) => { event.preventDefault(); dispatch(UserAction.login.index({ id: id, pw: pw })) }}>
         <table>
           <tbody>
             <tr>
@@ -28,8 +28,4 @@ const Login: React.FC = (props: any) => {
   );
 };
 
-const mapDispatchToProps = (dispatch: any) => ({
-  login: (inputUserData: any) => dispatch(UserAction.login.index(inputUserData))
-});
-
-export default connect(null, mapDispatchToProps)(Login);
+export default Login;

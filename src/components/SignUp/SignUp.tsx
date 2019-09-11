@@ -1,18 +1,18 @@
 import React, { useState } from 'react';
-import { connect } from 'react-redux';
-import { UserAction } from '../../store/user/user.action'
+import { useDispatch } from 'react-redux';
+import { UserAction } from '../../store/user/user.action';
 import './style.scss';
 
-const SignUp: React.FC = (props: any) => {
+const SignUp: React.FC = () => {
   const [id, setId] = useState('');
   const [pw, setPw] = useState('');
   const [name, setName] = useState('');
-  const push = (url: string) => props.history.push(url);
+  const dispatch = useDispatch();
 
   return (
     <div className='signUp'>
       <h2 className='table-title'>회원가입</h2>
-      <form onSubmit={(event) => { event.preventDefault(); props.signUp({ id: id, pw: pw, name: name, push: push }) }}>
+      <form onSubmit={(event) => { event.preventDefault(); dispatch(UserAction.signUp.index({ id: id, pw: pw, name: name })) }}>
         <table>
           <tbody>
             <tr>
@@ -32,8 +32,4 @@ const SignUp: React.FC = (props: any) => {
   );
 };
 
-const mapDispatchToProps = (dispatch: any) => ({
-  signUp: (inputUserData: any) => dispatch(UserAction.signUp.index(inputUserData))
-});
-
-export default connect(null, mapDispatchToProps)(SignUp);
+export default SignUp;

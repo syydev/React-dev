@@ -1,12 +1,16 @@
 import React from 'react';
 import { Link, NavLink } from 'react-router-dom';
-import { connect } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { UserAction } from '../../store/user/user.action'
+import { IState } from '../../type';
 import './style.scss';
 
-const Header: React.FC = (props: any) => {
-  const { isLoggedIn, name, logout } = props;
-  const push = (url: string) => props.history.push(url);
+const Header: React.FC = () => {
+  const dispatch = useDispatch();
+  const { isLoggedIn, name } = useSelector((state: IState) => ({
+    isLoggedIn: state.user.isLoggedIn,
+    name: state.user.name,
+  }));
 
   return (
     <div className='app-header'>
@@ -20,20 +24,11 @@ const Header: React.FC = (props: any) => {
           <nav className="header-nav">
             <NavLink className='header-nav-item' activeClassName="active" style={{ textDecoration: 'none' }} to='/post'>Post List</NavLink>
             <NavLink className='header-nav-item' activeClassName="active" style={{ textDecoration: 'none' }} to='/user'>{name}</NavLink>
-            <a className='header-nav-item' onClick={() => logout({ push: push })}>Logout</a>
+            <a className='header-nav-item' onClick={() => dispatch(UserAction.logout.index())}>Logout</a>
           </nav>
         )}
     </div>
   );
 };
 
-const mapStateToProps = (state: any) => ({
-  isLoggedIn: state.user.isLoggedIn,
-  name: state.user.name
-});
-
-const mapDispatchToProps = (dispatch: any) => ({
-  logout: (push: any) => dispatch(UserAction.logout.index(push))
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(Header);
+export default Header;

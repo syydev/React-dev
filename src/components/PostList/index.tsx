@@ -1,5 +1,3 @@
 import PostList from './PostList';
 
-export {
-  PostList
-};
+export default PostList;

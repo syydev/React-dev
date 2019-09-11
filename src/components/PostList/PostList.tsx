@@ -1,11 +1,13 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { connect } from 'react-redux';
+import { useSelector } from 'react-redux';
 import Pagination from './Pagination';
+import { IState } from '../../type';
 import './style.scss';
 
-const PostList: React.FC = (props: any) => {
-  const { totalItems, items } = props;
+const PostList: React.FC = () => {
+  const totalItems = useSelector((state: IState) => state.table.totalItems); 
+  const items = useSelector((state: IState) => state.table.items);
   const pageSize = 10;
 
   return (
@@ -26,7 +28,7 @@ const PostList: React.FC = (props: any) => {
               <tr className='table-content'>
                 <td>{index + 1}</td>
                 <td>{item.creationDate}</td>
-                <td><Link to={{ pathname: `/post/${index + 1}/${item.title}`, state: item }}>{item.title}</Link></td>
+                <td><Link to={`/post/${item._id}/${item.title}`} > {item.title}</Link></td>
                 <td>{item.content}</td>
                 <td>{item.userId}</td>
               </tr>
@@ -42,9 +44,4 @@ const PostList: React.FC = (props: any) => {
   );
 };
 
-const mapStateToProps = (state: any) => ({
-  items: state.table.items,
-  totalItems: state.table.totalItems
-});
-
-export default connect(mapStateToProps)(PostList);
+export default PostList;
