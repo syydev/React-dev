@@ -8,14 +8,15 @@ import PostList from './components/PostList';
 import Registration from './components/Registration';
 import PostInfo from './components/PostInfo';
 import Modification from './components/Modification';
-import './style.scss';
+import Footer from './components/Footer';
+import styled from 'styled-components';
 
 const App: React.FC = () => {
   return (
-    <React.Fragment>
+    <Container>
       <HeaderContainer />
       <Switch>
-        <div className='content'>
+        <Content>
           <Route exact path="/" component={HomeContainer} />
           <Route exact path="/login" component={Login} />
           <Route exact path="/signup" component={SignUp} />
@@ -23,10 +24,19 @@ const App: React.FC = () => {
           <Route exact path="/post/registration" component={Registration} />
           <Route exact path="/post/:id/:title" component={PostInfo} />
           <Route exact path="/post/:id/:title/modification" component={Modification} />
-        </div>
+        </Content>
       </Switch>
-    </React.Fragment>
+      <Footer />
+    </Container>
   );
 };
+
+const Container = styled.div`
+  min-height: 100%;
+`;
+
+const Content = styled.div`
+  min-height: 100%;
+`;
 
 export default App;

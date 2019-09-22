@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { UserAction } from '../../store/user/user.action'
 import { IState } from '../../type';
 import styled from 'styled-components';
+import { headerHeight } from '../../utils/GlobalStyles';
 
 const Header: React.FC = () => {
   const dispatch = useDispatch();
@@ -13,7 +14,6 @@ const Header: React.FC = () => {
   }));
 
   return (
-    <React.Fragment>
     <AppHeader>
       <AppTitle to='/'>React-dev</AppTitle>
       {!isLoggedIn ? (
@@ -29,15 +29,13 @@ const Header: React.FC = () => {
           </AppNav>
         )}
     </AppHeader>
-    <Dummy />
-    </React.Fragment>
   );
 };
 
-const AppHeader = styled.div`
-  position:fixed;
+const AppHeader = styled.header`
+  position: relative;
   background: white;
-  padding: 15px;
+  height: ${headerHeight};
   width: 100%;
   border-bottom: 1px solid #C7CED5;
   z-index: 9999;
@@ -52,7 +50,6 @@ const AppTitle = styled(Link)`
 `;
 
 const AppNav = styled.nav`
-  /* display: inline-block; */
   float: right;
   font-weight: 700;
   right: 20px;
@@ -63,7 +60,6 @@ const AppNavLink = styled(NavLink)`
   font-size: 17px;
   color: #A6A6A6;
   margin-right: 15px;
-
   &:hover {
     color: black;
   }
@@ -77,14 +73,9 @@ const AppNavItem = styled.a`
   color: #A6A6A6;
   margin-right: 15px;
   cursor: pointer;
-
   &:hover {
     color: black;
   }
-`;
-
-const Dummy = styled.div`
-  padding: 32px;
 `;
 
 export default Header;
