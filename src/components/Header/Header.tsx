@@ -33,11 +33,11 @@ const Header: React.FC = () => {
 };
 
 const AppHeader = styled.header`
-  position: relative;
-  background: white;
+  position: fixed;
+  background: #343A40;
+  top: 0;
   height: ${headerHeight};
   width: 100%;
-  border-bottom: 1px solid #C7CED5;
   z-index: 9999;
 `;
 
@@ -46,7 +46,7 @@ const AppTitle = styled(Link)`
   text-decoration: none;
   font-size: 25px;
   font-weight: 700;
-  color: black;
+  color: white;
 `;
 
 const AppNav = styled.nav`
@@ -58,23 +58,23 @@ const AppNav = styled.nav`
 const AppNavLink = styled(NavLink)`
   text-decoration: none;
   font-size: 17px;
-  color: #A6A6A6;
+  color: #8D95A0;
   margin-right: 15px;
   &:hover {
-    color: black;
+    color: white;
   }
   &.active {
-    color: black;
+    color: white;
   }
 `;
 
 const AppNavItem = styled.a`
   font-size: 17px;
-  color: #A6A6A6;
+  color: #8D95A0;
   margin-right: 15px;
   cursor: pointer;
   &:hover {
-    color: black;
+    color: white;
   }
 `;
 

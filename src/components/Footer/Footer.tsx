@@ -41,10 +41,9 @@ const Footer: React.FC = () => {
 
 const AppFooter = styled.div`
   display: inline-table;
-  bottom: 0;
   width: 100%;
   height: ${footerHeight};
-  background: black;
+  background: #04091E;
 `;
 
 const FooterItem = styled.div`
@@ -61,7 +60,7 @@ const Title = styled.div`
 `;
 
 const Content = styled.div`
-  color: white;
+  color: #566787;
   font-size: 15px;
   a {
       color: red;

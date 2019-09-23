@@ -10,6 +10,7 @@ import PostInfo from './components/PostInfo';
 import Modification from './components/Modification';
 import Footer from './components/Footer';
 import styled from 'styled-components';
+import { headerHeight, footerHeight } from './utils/GlobalStyles';
 
 const App: React.FC = () => {
   return (
@@ -32,11 +33,12 @@ const App: React.FC = () => {
 };
 
 const Container = styled.div`
-  min-height: 100%;
+  height: 100%;
 `;
 
 const Content = styled.div`
-  min-height: 100%;
+  margin-top: ${headerHeight};
+  min-height: calc(100vh - ${footerHeight});
 `;
 
 export default App;
