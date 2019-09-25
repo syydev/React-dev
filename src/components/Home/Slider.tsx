@@ -67,14 +67,13 @@ const Slider: React.FC = () => {
 }
 
 const Container = styled.div`
-  position: relative;
   width: 100%;
   overflow: hidden;
 `;
 
 const Slide = styled.div`
   display: flex;
-  height: 600px;
+  height: 500px;
   transition: ${(props: ISlide) => props.sliding ? 'none' : 'transform 1s ease'};
   transform: ${(props: ISlide) => {
     if (!props.sliding) return 'translateX(calc(-100%))'
@@ -85,8 +84,7 @@ const Slide = styled.div`
 
 const Img = styled.div`
   flex: 1 0 100%;
-  max-height: 100%;
-  max-width: 100%;
+  width: auto;
   text-align: center;
   color: ${(props: IImg) => props.textColor};
   order: ${(props: IImg) => props.order};
@@ -94,7 +92,7 @@ const Img = styled.div`
 `;
 
 const ImgTitle = styled.h1`
-  margin-top: 480px;
+  margin-top: 370px;
 `;
 
 const ImgContent = styled.p`
